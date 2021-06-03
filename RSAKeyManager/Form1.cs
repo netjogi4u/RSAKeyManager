@@ -75,7 +75,7 @@ namespace RSAKeyManager
                     MessageBox.Show("Private key not available");
                     return;
                 }
-                else if (string.IsNullOrEmpty(txtInputString.Text))
+                else if (string.IsNullOrEmpty(getInputText()))
                 {
                     MessageBox.Show("Input string cannot be empty");
                     return;
@@ -83,7 +83,7 @@ namespace RSAKeyManager
 
                 else
                 {
-                    txtHash.Text =  Cryptography.Sign(txtPrivateKey.Text, txtInputString.Text);
+                    txtHash.Text =  Cryptography.Sign(txtPrivateKey.Text, getInputText());
                     setStatus("Signature generated");
                 }
                    
@@ -111,12 +111,12 @@ namespace RSAKeyManager
                     MessageBox.Show("Signature cannot be empty");
                     return;
                 }
-                else if (string.IsNullOrEmpty(txtInputString.Text))
+                else if (string.IsNullOrEmpty(getInputText()))
                 {
                     MessageBox.Show("input string cannot be empty");
                     return;
                 }
-                if (Cryptography.Verify(txtPublicKey.Text, txtInputString.Text, txtHash.Text))
+                if (Cryptography.Verify(txtPublicKey.Text, getInputText(), txtHash.Text))
                     setStatus("Success !!! provided signature cryptographically matches with the text.");
 
                 else
@@ -138,18 +138,18 @@ namespace RSAKeyManager
                     MessageBox.Show("Public key not available");
                     return;
                 }
-                else if (string.IsNullOrEmpty(txtInputString.Text))
+                else if (string.IsNullOrEmpty(getInputText()))
                 {
                     MessageBox.Show("Input string cannot be empty");
                     return;
                 }
-                else if (chkOverflow.Checked == false && Cryptography.validateInputSize(txtInputString.Text,txtPublicKey.Text,chkOAEPPedding.Checked) == false)
+                else if (chkOverflow.Checked == false && Cryptography.validateInputSize(getInputText(),txtPublicKey.Text,chkOAEPPedding.Checked) == false)
                 {
                     MessageBox.Show("Length of input string is greater than allowed lengh by selected Key size, either check overflow or uncheck OAEP padding or use higer key size.");
                     return;
                 }    
                 txtHash.Text = string.Empty;
-                txtHash.Text = Cryptography.Encrypt(txtPublicKey.Text, txtInputString.Text, chkOAEPPedding.Checked);
+                txtHash.Text = Cryptography.Encrypt(txtPublicKey.Text, getInputText(), chkOAEPPedding.Checked);
                 setStatus("Text encrypted.");
 
             }
@@ -489,9 +489,9 @@ namespace RSAKeyManager
 
         private void btnCopyText_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtInputString.Text))
+            if (!string.IsNullOrEmpty(getInputText()))
             {
-                Clipboard.SetText(txtInputString.Text);
+                Clipboard.SetText(getInputText());
                 setStatus("Text copied to clipboard.");
             }
             
@@ -526,5 +526,13 @@ namespace RSAKeyManager
                 setStatus("Cypher copied from clipboard.");
             }
         }
+
+        string getInputText()
+        {
+            if (chkLinefeed.Checked)
+                return txtInputString.Text.Replace("\r\n", "\n");
+            return txtInputString.Text;
+        }
+      
     }
 }

@@ -64,6 +64,7 @@ namespace RSAKeyManager
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pgProgress = new System.Windows.Forms.ToolStripProgressBar();
+            this.chkLinefeed = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -135,6 +136,7 @@ namespace RSAKeyManager
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.groupBox1.Controls.Add(this.chkLinefeed);
             this.groupBox1.Controls.Add(this.btnPasteHash);
             this.groupBox1.Controls.Add(this.btnCopyHash);
             this.groupBox1.Controls.Add(this.btnPasteText);
@@ -151,7 +153,7 @@ namespace RSAKeyManager
             this.groupBox1.Controls.Add(this.txtInputString);
             this.groupBox1.Location = new System.Drawing.Point(12, 551);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1430, 136);
+            this.groupBox1.Size = new System.Drawing.Size(1430, 165);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sign and Verify TEXT";
@@ -160,7 +162,7 @@ namespace RSAKeyManager
             // 
             this.btnPasteHash.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPasteHash.BackgroundImage")));
             this.btnPasteHash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnPasteHash.Location = new System.Drawing.Point(1384, 57);
+            this.btnPasteHash.Location = new System.Drawing.Point(1384, 79);
             this.btnPasteHash.Name = "btnPasteHash";
             this.btnPasteHash.Size = new System.Drawing.Size(33, 30);
             this.btnPasteHash.TabIndex = 21;
@@ -171,7 +173,7 @@ namespace RSAKeyManager
             // 
             this.btnCopyHash.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCopyHash.BackgroundImage")));
             this.btnCopyHash.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnCopyHash.Location = new System.Drawing.Point(1348, 57);
+            this.btnCopyHash.Location = new System.Drawing.Point(1348, 79);
             this.btnCopyHash.Name = "btnCopyHash";
             this.btnCopyHash.Size = new System.Drawing.Size(33, 30);
             this.btnCopyHash.TabIndex = 20;
@@ -193,7 +195,7 @@ namespace RSAKeyManager
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(7, 60);
+            this.label4.Location = new System.Drawing.Point(7, 82);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(200, 25);
             this.label4.TabIndex = 16;
@@ -225,7 +227,7 @@ namespace RSAKeyManager
             this.chkOverflow.AutoSize = true;
             this.chkOverflow.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkOverflow.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.chkOverflow.Location = new System.Drawing.Point(832, 97);
+            this.chkOverflow.Location = new System.Drawing.Point(832, 119);
             this.chkOverflow.Name = "chkOverflow";
             this.chkOverflow.Size = new System.Drawing.Size(111, 29);
             this.chkOverflow.TabIndex = 14;
@@ -239,7 +241,7 @@ namespace RSAKeyManager
             this.chkOAEPPedding.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkOAEPPedding.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkOAEPPedding.ForeColor = System.Drawing.Color.Maroon;
-            this.chkOAEPPedding.Location = new System.Drawing.Point(221, 97);
+            this.chkOAEPPedding.Location = new System.Drawing.Point(221, 119);
             this.chkOAEPPedding.Name = "chkOAEPPedding";
             this.chkOAEPPedding.Size = new System.Drawing.Size(167, 29);
             this.chkOAEPPedding.TabIndex = 13;
@@ -250,7 +252,7 @@ namespace RSAKeyManager
             // 
             this.btnDecrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDecrypt.ForeColor = System.Drawing.Color.Maroon;
-            this.btnDecrypt.Location = new System.Drawing.Point(1098, 93);
+            this.btnDecrypt.Location = new System.Drawing.Point(1098, 115);
             this.btnDecrypt.Name = "btnDecrypt";
             this.btnDecrypt.Size = new System.Drawing.Size(143, 37);
             this.btnDecrypt.TabIndex = 10;
@@ -262,7 +264,7 @@ namespace RSAKeyManager
             // 
             this.btnEncrypt.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEncrypt.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.btnEncrypt.Location = new System.Drawing.Point(949, 93);
+            this.btnEncrypt.Location = new System.Drawing.Point(949, 115);
             this.btnEncrypt.Name = "btnEncrypt";
             this.btnEncrypt.Size = new System.Drawing.Size(143, 37);
             this.btnEncrypt.TabIndex = 9;
@@ -274,7 +276,7 @@ namespace RSAKeyManager
             // 
             this.btnVerify.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerify.ForeColor = System.Drawing.Color.Maroon;
-            this.btnVerify.Location = new System.Drawing.Point(586, 93);
+            this.btnVerify.Location = new System.Drawing.Point(586, 115);
             this.btnVerify.Name = "btnVerify";
             this.btnVerify.Size = new System.Drawing.Size(143, 37);
             this.btnVerify.TabIndex = 8;
@@ -286,7 +288,7 @@ namespace RSAKeyManager
             // 
             this.btnSign.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSign.ForeColor = System.Drawing.Color.Maroon;
-            this.btnSign.Location = new System.Drawing.Point(437, 93);
+            this.btnSign.Location = new System.Drawing.Point(437, 115);
             this.btnSign.Name = "btnSign";
             this.btnSign.Size = new System.Drawing.Size(143, 37);
             this.btnSign.TabIndex = 7;
@@ -297,7 +299,7 @@ namespace RSAKeyManager
             // txtHash
             // 
             this.txtHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtHash.Location = new System.Drawing.Point(221, 57);
+            this.txtHash.Location = new System.Drawing.Point(221, 79);
             this.txtHash.Name = "txtHash";
             this.txtHash.Size = new System.Drawing.Size(1120, 30);
             this.txtHash.TabIndex = 1;
@@ -306,8 +308,10 @@ namespace RSAKeyManager
             // 
             this.txtInputString.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInputString.Location = new System.Drawing.Point(221, 21);
+            this.txtInputString.Multiline = true;
             this.txtInputString.Name = "txtInputString";
-            this.txtInputString.Size = new System.Drawing.Size(1120, 30);
+            this.txtInputString.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtInputString.Size = new System.Drawing.Size(1120, 52);
             this.txtInputString.TabIndex = 0;
             // 
             // btnDecryptFile
@@ -428,9 +432,9 @@ namespace RSAKeyManager
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsStatus,
             this.pgProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 690);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 719);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1454, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1456, 26);
             this.statusStrip1.TabIndex = 18;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -438,20 +442,34 @@ namespace RSAKeyManager
             // 
             this.tsStatus.AutoSize = false;
             this.tsStatus.Name = "tsStatus";
-            this.tsStatus.Size = new System.Drawing.Size(800, 20);
+            this.tsStatus.Size = new System.Drawing.Size(800, 21);
             this.tsStatus.Text = "Ready";
             this.tsStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pgProgress
             // 
             this.pgProgress.Name = "pgProgress";
-            this.pgProgress.Size = new System.Drawing.Size(200, 18);
+            this.pgProgress.Size = new System.Drawing.Size(200, 20);
+            // 
+            // chkLinefeed
+            // 
+            this.chkLinefeed.AutoSize = true;
+            this.chkLinefeed.Checked = true;
+            this.chkLinefeed.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkLinefeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLinefeed.ForeColor = System.Drawing.Color.Black;
+            this.chkLinefeed.Location = new System.Drawing.Point(46, 50);
+            this.chkLinefeed.Name = "chkLinefeed";
+            this.chkLinefeed.Size = new System.Drawing.Size(149, 29);
+            this.chkLinefeed.TabIndex = 22;
+            this.chkLinefeed.Text = "\\n for newline";
+            this.chkLinefeed.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1454, 716);
+            this.ClientSize = new System.Drawing.Size(1456, 745);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.btnPastePublicKey);
             this.Controls.Add(this.btnCopyPublicKey);
@@ -521,6 +539,7 @@ namespace RSAKeyManager
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsStatus;
         private System.Windows.Forms.ToolStripProgressBar pgProgress;
+        private System.Windows.Forms.CheckBox chkLinefeed;
     }
 }
 
