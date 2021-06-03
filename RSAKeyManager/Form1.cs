@@ -17,6 +17,7 @@ namespace RSAKeyManager
         private void Form1_Load(object sender, EventArgs e)
         {
             cmbKeySize.SelectedIndex = 2;
+            ddlHashingAlgo.SelectedIndex = 2;
             generateKeys();
         }
 
@@ -80,10 +81,14 @@ namespace RSAKeyManager
                     MessageBox.Show("Input string cannot be empty");
                     return;
                 }
-
+                else if(Convert.ToInt16(cmbKeySize.SelectedItem) == 512 && (ddlHashingAlgo.SelectedItem.ToString() == "SHA512" || ddlHashingAlgo.SelectedItem.ToString() == "SHA384"))
+                {
+                    MessageBox.Show(string.Format("Algo {0} is not allowed with keysize 512, please select greater keysize.",ddlHashingAlgo.SelectedItem.ToString()));
+                    return;
+                }
                 else
                 {
-                    txtHash.Text =  Cryptography.Sign(txtPrivateKey.Text, getInputText());
+                    txtHash.Text =  Cryptography.Sign(txtPrivateKey.Text, getInputText(), ddlHashingAlgo.SelectedItem.ToString());
                     setStatus("Signature generated");
                 }
                    
@@ -116,7 +121,7 @@ namespace RSAKeyManager
                     MessageBox.Show("input string cannot be empty");
                     return;
                 }
-                if (Cryptography.Verify(txtPublicKey.Text, getInputText(), txtHash.Text))
+                if (Cryptography.Verify(txtPublicKey.Text, getInputText(), txtHash.Text, ddlHashingAlgo.SelectedItem.ToString()))
                     setStatus("Success !!! provided signature cryptographically matches with the text.");
 
                 else
@@ -502,7 +507,10 @@ namespace RSAKeyManager
             string txtClipboard = Clipboard.GetText();
             if (!string.IsNullOrEmpty(txtClipboard))
             {
-                txtInputString.Text = txtClipboard;
+                if (chkLinefeed.Checked)
+                    txtInputString.Text = txtClipboard.Replace("\r\n", "\n");
+                else
+                    txtInputString.Text = txtClipboard;
                 setStatus("Text copied from clipboard.");
             }
         }

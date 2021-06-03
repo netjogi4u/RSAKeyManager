@@ -19,15 +19,33 @@ namespace RSAKeyManager
             return newKey;
         }
 
-        public static string Sign(string privateKey, string inputString)
+        public static string Sign(string privateKey, string inputString, string HashAlgo)
         {
             RSACryptoServiceProvider rsa = PEM.ImportPrivateKey(privateKey);
-            return Convert.ToBase64String(rsa.SignData(Encoding.ASCII.GetBytes(inputString), SHA256.Create()));
+            return Convert.ToBase64String(rsa.SignData(Encoding.ASCII.GetBytes(inputString), getHashingAlgorithm(HashAlgo)));
         }
-        public static bool Verify(string publicKey, string inputString, string signature)
+        public static bool Verify(string publicKey, string inputString, string signature, string HashAlgo)
         {
             RSACryptoServiceProvider rsa = PEM.ImportPublicKey(publicKey);
-            return rsa.VerifyData(Encoding.ASCII.GetBytes(inputString), SHA256.Create(), Convert.FromBase64String(signature));
+            return rsa.VerifyData(Encoding.ASCII.GetBytes(inputString), getHashingAlgorithm(HashAlgo), Convert.FromBase64String(signature));
+        }
+
+        static object getHashingAlgorithm(string HashingAlgo)
+        {
+            object Algo = null;
+            if (HashingAlgo == "SHA1")
+                Algo= SHA1.Create();
+            else if (HashingAlgo == "SHA256")
+                Algo= SHA256.Create();
+            else if (HashingAlgo == "SHA384")
+                Algo= SHA384.Create();
+            else if (HashingAlgo == "SHA512")
+                Algo= SHA512.Create();
+            else if (HashingAlgo == "MD5")
+                Algo= MD5.Create();
+            return Algo;
+
+
         }
 
         public static bool validate(string key, bool isprivate)
