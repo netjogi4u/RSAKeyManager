@@ -19,6 +19,14 @@ namespace RSAKeyManager
             return newKey;
         }
 
+        public static Key getPublicKeyfromPrivateKey(string privateKey)
+        {
+
+            RSACryptoServiceProvider rsa = PEM.ImportPrivateKey(privateKey);
+            return new Key() { privateKey = privateKey, publicKey = PEM.ExportPublicKey(rsa), keySize = rsa.KeySize };                  
+            
+        }
+
         public static string Sign(string privateKey, string inputString, string HashAlgo)
         {
             RSACryptoServiceProvider rsa = PEM.ImportPrivateKey(privateKey);

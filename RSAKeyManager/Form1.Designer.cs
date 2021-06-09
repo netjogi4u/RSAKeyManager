@@ -37,6 +37,7 @@ namespace RSAKeyManager
             this.cmbKeySize = new System.Windows.Forms.ComboBox();
             this.txtPrivateKey = new System.Windows.Forms.RichTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ddlHashingAlgo = new System.Windows.Forms.ComboBox();
             this.chkLinefeed = new System.Windows.Forms.CheckBox();
             this.btnPasteHash = new System.Windows.Forms.Button();
             this.btnCopyHash = new System.Windows.Forms.Button();
@@ -65,7 +66,6 @@ namespace RSAKeyManager
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.pgProgress = new System.Windows.Forms.ToolStripProgressBar();
-            this.ddlHashingAlgo = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -160,11 +160,25 @@ namespace RSAKeyManager
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sign and Verify TEXT";
             // 
+            // ddlHashingAlgo
+            // 
+            this.ddlHashingAlgo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ddlHashingAlgo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ddlHashingAlgo.FormattingEnabled = true;
+            this.ddlHashingAlgo.Items.AddRange(new object[] {
+            "MD5",
+            "SHA1",
+            "SHA256",
+            "SHA384",
+            "SHA512"});
+            this.ddlHashingAlgo.Location = new System.Drawing.Point(221, 179);
+            this.ddlHashingAlgo.Name = "ddlHashingAlgo";
+            this.ddlHashingAlgo.Size = new System.Drawing.Size(157, 33);
+            this.ddlHashingAlgo.TabIndex = 19;
+            // 
             // chkLinefeed
             // 
             this.chkLinefeed.AutoSize = true;
-            this.chkLinefeed.Checked = true;
-            this.chkLinefeed.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkLinefeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkLinefeed.ForeColor = System.Drawing.Color.Black;
             this.chkLinefeed.Location = new System.Drawing.Point(46, 54);
@@ -314,15 +328,15 @@ namespace RSAKeyManager
             // 
             // txtHash
             // 
-            this.txtHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHash.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtHash.Location = new System.Drawing.Point(222, 142);
             this.txtHash.Name = "txtHash";
-            this.txtHash.Size = new System.Drawing.Size(1120, 30);
+            this.txtHash.Size = new System.Drawing.Size(1120, 26);
             this.txtHash.TabIndex = 1;
             // 
             // txtInputString
             // 
-            this.txtInputString.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInputString.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtInputString.Location = new System.Drawing.Point(221, 21);
             this.txtInputString.Multiline = true;
             this.txtInputString.Name = "txtInputString";
@@ -448,18 +462,18 @@ namespace RSAKeyManager
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsStatus,
             this.pgProgress});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 719);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 717);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1456, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1456, 28);
             this.statusStrip1.TabIndex = 18;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // tsStatus
             // 
             this.tsStatus.AutoSize = false;
-            this.tsStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.tsStatus.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.tsStatus.Name = "tsStatus";
-            this.tsStatus.Size = new System.Drawing.Size(800, 21);
+            this.tsStatus.Size = new System.Drawing.Size(800, 22);
             this.tsStatus.Text = "Ready";
             this.tsStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -467,22 +481,6 @@ namespace RSAKeyManager
             // 
             this.pgProgress.Name = "pgProgress";
             this.pgProgress.Size = new System.Drawing.Size(200, 20);
-            // 
-            // ddlHashingAlgo
-            // 
-            this.ddlHashingAlgo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddlHashingAlgo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ddlHashingAlgo.FormattingEnabled = true;
-            this.ddlHashingAlgo.Items.AddRange(new object[] {
-            "MD5",
-            "SHA1",
-            "SHA256",
-            "SHA384",
-            "SHA512"});
-            this.ddlHashingAlgo.Location = new System.Drawing.Point(221, 179);
-            this.ddlHashingAlgo.Name = "ddlHashingAlgo";
-            this.ddlHashingAlgo.Size = new System.Drawing.Size(157, 33);
-            this.ddlHashingAlgo.TabIndex = 19;
             // 
             // Form1
             // 

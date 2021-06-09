@@ -19,6 +19,7 @@ namespace RSAKeyManager
             cmbKeySize.SelectedIndex = 2;
             ddlHashingAlgo.SelectedIndex = 2;
             generateKeys();
+            txtPrivateKey.TextChanged += txtPrivateKey_TextChanged;
         }
 
         void setButtonState(bool state)
@@ -300,6 +301,7 @@ namespace RSAKeyManager
                             Key myKey = FileSystem.ReadPrivateKey(ofd.OpenFile());
                             txtPrivateKey.Text = myKey.privateKey;
                             txtPublicKey.Text = myKey.publicKey;
+                            cmbKeySize.Text = myKey.keySize.ToString();
                             setStatus("Private key imported.");
                         }
                         catch
@@ -466,7 +468,7 @@ namespace RSAKeyManager
             string txtClipboard = Clipboard.GetText();
             if(!string.IsNullOrEmpty(txtClipboard))
             {
-                txtPrivateKey.Text = txtClipboard;
+                txtPrivateKey.Text = txtClipboard;                
                 setStatus("Private key copied from clipboard.");
             }
 
@@ -487,6 +489,7 @@ namespace RSAKeyManager
             if (!string.IsNullOrEmpty(txtClipboard))
             {
                 txtPublicKey.Text = txtClipboard;
+                txtPrivateKey.Text = string.Empty;
                 setStatus("Public key copied from clipboard.");
             }
             
@@ -541,6 +544,15 @@ namespace RSAKeyManager
                 return txtInputString.Text.Replace("\r\n", "\n");
             return txtInputString.Text;
         }
-      
+
+        private void txtPrivateKey_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtPrivateKey.Text) && Cryptography.validate(txtPrivateKey.Text, true))
+            {
+                Key Mykey = Cryptography.getPublicKeyfromPrivateKey(txtPrivateKey.Text);
+                txtPublicKey.Text = Mykey.publicKey;
+                cmbKeySize.Text = Mykey.keySize.ToString();
+            }
+        }
     }
 }

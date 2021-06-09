@@ -16,6 +16,7 @@ namespace RSAKeyManager
                     myKey.privateKey = reader.ReadToEnd();
                     RSACryptoServiceProvider csp = PEM.ImportPrivateKey(myKey.privateKey);
                     myKey.publicKey = PEM.ExportPublicKey(PEM.ImportPrivateKey(myKey.privateKey));
+                    myKey.keySize = csp.KeySize;
                 }
             }
             return myKey;
